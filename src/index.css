@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Grid styling for images */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 images per row */
+  gap: 1rem; /* Spacing between images */
+  justify-items: center; /* Center images in each grid cell */
+}
+
+/* Image wrapper for individual transformations */
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Category-specific rotation styling */
+.category-image {
+  width: 120px; /* Fixed width for all images */
+  height: 80px; /* Fixed height for all images */
+  object-fit: contain; /* Ensure images fit within the container */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Rotation animation */
+.category-image.rotating {
+  animation: categoryRotation 0.7s ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes categoryRotation {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: var(--rotation) scale(0.7);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Hover effect for images */
+.category-image:hover {
+  transform: scale(1.1); /* Slightly larger zoom on hover */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  z-index: 10; /* Ensure hover state is on top */
+}
