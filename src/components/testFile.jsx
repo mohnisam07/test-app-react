@@ -1,5 +1,5 @@
 import "../index.css"
-import { useState} from 'react';
+import { useState } from 'react';
 import image11 from './images/image1.jpg';
 import image12 from './images/image1.jpg';
 import image13 from './images/image1.jpg';
@@ -31,13 +31,33 @@ const TestFile = () => {
     'Non-State Actors': [image41, image42, image43, image44],
   };
 
-  // Unique rotation configurations for each image
-  const getRotationConfigs = () => [
-    { transform: 'rotateY(180deg)', delay: 0 },
-    { transform: 'rotateX(180deg)', delay: 0.5 },
-    { transform: 'rotateZ(180deg)', delay: 0.1 },
-    { transform: 'rotate(180deg)', delay: 0.15 }
-  ];
+  // More complex rotation configurations for each category
+  const rotationConfigs = {
+    'Public Sector': [
+      { transform: 'rotate(45deg)', delay: 0 },
+      { transform: 'rotate(-45deg)', delay: 0.2 },
+      { transform: 'rotateZ(180deg)', delay: 0.4 },
+      { transform:  'rotate(-45deg)', delay: 0.6 }
+    ],
+    'Private Sector': [
+      { transform: 'rotate(45deg)', delay: 0 },
+      { transform: 'rotate(-45deg)', delay: 0.2 },
+      { transform: 'rotateZ(180deg)', delay: 0.4 },
+      { transform: 'rotate(-45deg)', delay: 0.6 }
+    ],
+    'Research & Academia': [
+      { transform: 'rotate(45deg)', delay: 0 },
+      { transform: 'rotate(-45deg)', delay: 0.2 },
+      { transform: 'rotateZ(180deg)', delay: 0.4 },
+      { transform: 'rotate(-45deg)', delay: 0.6 }
+    ],
+    'Non-State Actors': [
+      { transform: 'rotate(45deg)', delay: 0 },
+      { transform: 'rotate(-45deg)', delay: 0.2 },
+      { transform: 'rotateZ(180deg)', delay: 0.4},
+      { transform: 'rotate(-45deg)', delay: 0.6 }
+    ]
+  };
 
   const handleCategoryChange = (category) => {
     setIsRotating(true);
@@ -46,7 +66,7 @@ const TestFile = () => {
     // Reset rotation after animation completes
     setTimeout(() => {
       setIsRotating(false);
-    }, 800); // Match the animation duration
+    }, 1200); // Increased duration to match longer animations
   };
 
   return (
@@ -75,7 +95,7 @@ const TestFile = () => {
         {/* Images */}
         <div className="grid" key={selectedCategory}>
           {images[selectedCategory].map((image, index) => {
-            const rotationConfig = getRotationConfigs()[index];
+            const rotationConfig = rotationConfigs[selectedCategory][index];
             return (
               <div 
                 key={index} 

@@ -15,6 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* Category-specific rotation styling */
@@ -25,11 +26,12 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.7s ease-in-out;
 }
 
 /* Rotation animation */
 .category-image.rotating {
-  animation: categoryRotation 0.7s ease-in-out forwards;
+  animation: categoryRotation 1s ease-in-out forwards;
   animation-delay: var(--delay);
 }
 
